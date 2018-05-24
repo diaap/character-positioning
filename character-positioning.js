@@ -8,43 +8,28 @@ for each letter, we're returning (potentially)
  multiple numbers to represent all the places where the character shows up
 */
 
-function countLetters (sentence) {
 
-  var noSpaces = sentence.split(" ").join("");
+function countLetters (str) {
+  let newStr = str.split('');
+  let uniqueChars = {};
 
-  var characterCount = {};
-  for (var i = 0; i < noSpaces.length; i++) {
-  var character = noSpaces[i];
-    if (characterCount[character]) {
-      characterCount[character].push(i);
-      //(console.log("characters being pushed", characterCount[character].push(i)))
-    } else {
-      characterCount[character] = [i];
-      //(console.log("character", characterCount[character] = [i]))
+  for (let i = 0; i < newStr.length; i++) {
+    let curChar = newStr[i];
+    if (curChar !== ' ') {
+      if (uniqueChars[curChar]) {
+        uniqueChars[curChar].push(i);
+       //(console.log("characters being pushed", uniqueChars[curChar].push(i)))
+      } else {
+        uniqueChars[curChar] = [i];
+       //(console.log("character", uniqueChars[curChar] = [i]))
+      }
     }
   }
-  return characterCount;
 
+  return uniqueChars;
 }
 
 countLetters("lighthouse in the house");
 
-
-
 //
 
-/*
-{
-  l: 0,
-  i: 1,
-  g: 2,
-  h: 3,
-  t: 4,
-  o: 5,
-  u: 2,
-  s: 2,
-  e: 3,
-  n: 1,
-}
-
-*/
